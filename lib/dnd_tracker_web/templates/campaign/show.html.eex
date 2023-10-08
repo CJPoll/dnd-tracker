@@ -1,0 +1,13 @@
+<h1><%= @campaign.name %></h1>
+
+<h2> Players</h2>
+
+<ul>
+  <%= for player <- @campaign.players do %>
+    <li><%= player.name %></li>
+  <% end %>
+</ul>
+
+<span><%= link "New Player", to: Routes.player_path(@conn, :new, @campaign) %></span>
+<span><%= link "Edit", to: Routes.campaign_path(@conn, :edit, @campaign) %></span>
+<span><%= link "Back", to: Routes.campaign_path(@conn, :index) %></span>

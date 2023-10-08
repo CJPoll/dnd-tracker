@@ -1,0 +1,5 @@
+<h1>Edit Enemy</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.enemy_path(@conn, :update, @enemy)) %>
+
+<span><%= link "Back", to: Routes.enemy_path(@conn, :index, @enemy.campaign) %></span>

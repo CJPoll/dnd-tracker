@@ -1,0 +1,19 @@
+<div class="inline-block">
+  <%= label @form, :average %>
+  <%= text_input @form, :average %>
+</div>
+
+<div class="inline-block">
+  <%= label @form, :count %>
+  <%= number_input @form, :count %>
+</div>
+
+<div class="inline-block">
+  <%= label @form, :value %>
+  <%= number_input @form, :value %>
+</div>
+
+<div class="inline-block">
+  <%= label @form, :modifier %>
+  <%= number_input @form, :modifier %>
+</div>

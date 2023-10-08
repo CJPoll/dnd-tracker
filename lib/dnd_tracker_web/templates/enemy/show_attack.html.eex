@@ -1,0 +1,7 @@
+<li>Name: <%= @attack.name %></li>
+<%= if @attack.description && (@attack.description |> String.trim() != "") do %>
+  <li>Description: <%= @attack.description %></li>
+<% end %>
+<li>Range: <%= @attack.range %></li>
+<li>Damage: <%= Dice.dice_syntax(@attack.damage) %> (Avg: <%= @attack.damage.average %>; Level: <%= Attack.damage_level(@attack) %>)
+  <li>Attack Bonus: <%= attack_bonus(@attack.attack_bonus) %> (Expected for damage level: <%= @attack |> Attack.damage_level() |> AttackBonus.for_level() |> attack_bonus()%>)</li>

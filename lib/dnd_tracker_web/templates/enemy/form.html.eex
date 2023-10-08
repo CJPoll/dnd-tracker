@@ -1,0 +1,53 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+
+  <%= label f, :description %>
+  <%= textarea f, :description %>
+
+  <%= inputs_for f, :hp, fn hp_f -> %>
+    <%= render "dice_form_elements.html", form: hp_f %>
+  <% end %>
+
+  <%= label f, :ac, "Armor Class" %>
+  <%= number_input f, :ac %>
+
+  <%= inputs_for f, :attacks, fn attack_f -> %>
+    <div class="attack-outline">
+      <%= label attack_f, :name, "Attack Name" %>
+      <%= text_input attack_f, :name %>
+
+      <%= label attack_f, :description, "Attack Description" %>
+      <%= textarea attack_f, :description %>
+
+      <div class="inline-block">
+        <%= label attack_f, :damage_type, "Damage Type" %>
+        <%= select attack_f, :damage_type, Attack.damage_types, selected: Ecto.Changeset.get_field(attack_f.source, :damage_type), prompt: "Select a Damage Type" %>
+      </div>
+
+      <div class="inline-block">
+        <%= label attack_f, :range %>
+        <%= number_input attack_f, :range %>
+      </div>
+
+      <div class="inline-block">
+        <%= label attack_f, :attack_bonus, "Attack Bonus" %>
+        <%= number_input attack_f, :attack_bonus %>
+      </div>
+
+      <%= inputs_for attack_f, :damage, fn damage_f -> %>
+        <%= render "dice_form_elements.html", form: damage_f %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

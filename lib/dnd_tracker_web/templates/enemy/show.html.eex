@@ -1,0 +1,19 @@
+<h1><%= @enemy.name %> (CR: <%= Enemy.challenge_rating(@enemy) %>; Defense CR: <%= Enemy.defensive_level(@enemy).level %>; Offense CR: <%= Enemy.offensive_level(@enemy).level %>)</h1>
+
+<ul>
+  <%= if @enemy.description && (@enemy.description |> String.trim() != "") do %>
+    <li>Description: <%= @enemy.description %></li>
+  <% end %>
+  <li>AC: <%= @enemy.ac %></li>
+
+  <%= for attack <- @enemy.attacks do %>
+    <div class="attack-outline">
+    <ul>
+      <%= render "show_attack.html", enemy: @enemy, attack: attack %>
+    </ul>
+    </div>
+  <% end %>
+</ul>
+
+<span><%= link "Edit", to: Routes.enemy_path(@conn, :edit, @enemy) %></span> |
+<span><%= link "Back", to: Routes.enemy_path(@conn, :index, @enemy.campaign) %></span>

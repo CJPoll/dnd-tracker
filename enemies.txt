@@ -1,0 +1,14 @@
+Enemy: Ditto
+------------
+AC: 16
+Defense: 5
+Offense: 4
+hp: 29d8-14 (Average: 116.5)
+Cannonball Attack: 40ft range, D20+5, 21d3-10 Bludgeoning
+Slashing Swing Attack: 10ft range, D20+7, 3D8-1 Slashing
+
+Enemy: Minion
+------------
+AC: 14
+Psychic Sting: 30ft range, D20+3, 14d2-7 (average 14)
+Necrotic Gaze: 20ft range, d20+3, 3d6(avg 10.5)

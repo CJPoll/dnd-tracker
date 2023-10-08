@@ -1,0 +1,29 @@
+<h1>Listing Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for player <- @players do %>
+      <tr>
+        <div>
+          <td>
+            <%= link player.name, to: Routes.player_path(@conn, :show, player)%>
+          </td>
+
+          <td>
+            <span><%= link "Edit", to: Routes.player_path(@conn, :edit, player) %></span>
+            <span><%= link "Delete", to: Routes.player_path(@conn, :delete, player), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Player", to: Routes.player_path(@conn, :new, @campaign) %></span>

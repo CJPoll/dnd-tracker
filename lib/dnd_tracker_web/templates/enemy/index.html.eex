@@ -1,0 +1,25 @@
+<h1>Listing Enemies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for enemy <- @enemies do %>
+    <tr>
+      <td><%= link enemy.name, to: Routes.enemy_path(@conn, :show, enemy) %></td>
+
+      <td>
+        <span></span>
+        <span><%= link "Edit", to: Routes.enemy_path(@conn, :edit, enemy) %></span>
+        <span><%= link "Delete", to: Routes.enemy_path(@conn, :delete, enemy), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Generate Enemy", to: Routes.enemy_path(@conn, :new, @campaign) %></span>
